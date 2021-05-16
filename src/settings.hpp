@@ -4,19 +4,26 @@
 
 #include <QObject>
 #include <QSettings>
+#include <QStandardPaths>
+#include <QJsonDocument>
+#include <QFile>
+#include <QJsonArray>
+#include <QDir>
+#include <QJsonObject>
 
 class Settings: public QObject
 {
 Q_OBJECT
 
 public:
-	explicit Settings(QObject *parent);
+	static auto getIntervals() -> QList<Interval>;
+	static void setIntervals(const QList<Interval> &intervals);
 
-	auto getIntervals() -> QList<Interval>;
-	void setIntervals(const QList<Interval> &intervals);
-
-	auto getPath() -> QString;
+	static auto getPath() -> QString;
 
 private:
-	QSettings settings;
+	explicit Settings(QObject *parent);
+
+	static auto load() -> QJsonObject;
+	static void save(const QJsonObject &json);
 };

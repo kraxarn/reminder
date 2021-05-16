@@ -18,12 +18,10 @@ TrayIcon::TrayIcon(QObject *parent)
 
 void TrayIcon::openSettings(bool /*checked*/)
 {
-	Settings settings(this);
-
-	if (settings.getIntervals().empty())
+	if (Settings::getIntervals().empty())
 	{
 		// Example interval
-		settings.setIntervals({
+		Settings::setIntervals({
 			Interval{
 				QTime::currentTime(),
 				0,
@@ -32,5 +30,5 @@ void TrayIcon::openSettings(bool /*checked*/)
 		});
 	}
 
-	QDesktopServices::openUrl(QUrl(settings.getPath()));
+	QDesktopServices::openUrl(QUrl(Settings::getPath()));
 }
