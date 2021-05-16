@@ -20,13 +20,13 @@ void TrayIcon::openSettings(bool /*checked*/)
 {
 	if (Settings::getIntervals().empty())
 	{
+		Interval interval;
+		interval.remindTime = QTime::currentTime();
+		interval.message = "Example interval";
+
 		// Example interval
 		Settings::setIntervals({
-			Interval{
-				QTime::currentTime(),
-				0,
-				"Example interval",
-			}
+			interval,
 		});
 	}
 
