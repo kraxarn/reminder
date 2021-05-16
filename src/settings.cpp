@@ -16,13 +16,13 @@ auto Settings::getIntervals() -> QList<Interval>
 	for (const auto &item : array)
 	{
 		const auto &obj = item.toObject();
-		intervals << Interval{
-			QTime::fromString(obj["remind_time"].toString(),
-				Qt::ISODate),
-			obj["minutes_before"].toInt(),
-			obj["message"].toString(),
-			obj["active"].toBool(),
-		};
+		Interval interval;
+		interval.message = obj["message"].toString();
+		interval.minutesBefore = obj["minutes_before"].toInt();
+		interval.remindTime = QTime::fromString(obj["remind_time"].toString(),
+			Qt::ISODate);
+		interval.active = obj["active"].toBool();
+		intervals << interval;
 	}
 	return intervals;
 }
