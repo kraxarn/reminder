@@ -2,14 +2,15 @@
 
 #include "interval.hpp"
 
+#include <QDebug>
+#include <QDir>
+#include <QFile>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QObject>
 #include <QSettings>
 #include <QStandardPaths>
-#include <QJsonDocument>
-#include <QFile>
-#include <QJsonArray>
-#include <QDir>
-#include <QJsonObject>
 
 class Settings: public QObject
 {
