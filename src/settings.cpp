@@ -1,10 +1,5 @@
 #include "settings.hpp"
 
-Settings::Settings(QObject *parent)
-	: QObject(parent)
-{
-}
-
 auto Settings::getIntervals() -> QList<Interval>
 {
 	auto json = load();

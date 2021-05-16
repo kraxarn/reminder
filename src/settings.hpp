@@ -12,10 +12,8 @@
 #include <QSettings>
 #include <QStandardPaths>
 
-class Settings: public QObject
+class Settings
 {
-Q_OBJECT
-
 public:
 	static auto getIntervals() -> QList<Interval>;
 	static void setIntervals(const QList<Interval> &intervals);
@@ -23,7 +21,7 @@ public:
 	static auto getPath() -> QString;
 
 private:
-	explicit Settings(QObject *parent);
+	Settings() = default;
 
 	static auto load() -> QJsonObject;
 	static void save(const QJsonObject &json);
