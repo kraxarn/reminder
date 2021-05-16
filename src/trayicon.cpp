@@ -1,9 +1,10 @@
 #include "trayicon.hpp"
+#include "icon.xpm"
 
 TrayIcon::TrayIcon(QObject *parent)
 	: QSystemTrayIcon(parent)
 {
-	setIcon(QIcon::fromTheme("notifications"));
+	setIcon(QIcon(QPixmap(icon_xpm)));
 
 	menu = new QMenu();
 
