@@ -2,7 +2,8 @@
 #include "icon.xpm"
 
 TrayIcon::TrayIcon(QObject *parent)
-	: QSystemTrayIcon(parent)
+	: timers(this),
+	QSystemTrayIcon(parent)
 {
 	setIcon(QIcon(QPixmap(icon_xpm)));
 
@@ -18,6 +19,8 @@ TrayIcon::TrayIcon(QObject *parent)
 	QAction::connect(quit, &QAction::triggered, &QCoreApplication::quit);
 
 	setContextMenu(menu);
+
+	timers.load(Settings::getIntervals());
 }
 
 void TrayIcon::openSettings(bool /*checked*/)
@@ -48,6 +51,8 @@ void TrayIcon::reload(bool /*checked*/)
 			actives++;
 		}
 	}
+
+	timers.load(intervals);
 
 	showMessage("reminder", QString("Loaded %1 %2 (%3 active)")
 		.arg(intervals.size())

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "settings.hpp"
+#include "timers.hpp"
 
 #include <QSystemTrayIcon>
 #include <QMenu>
@@ -17,6 +18,7 @@ public:
 
 private:
 	QMenu *menu = nullptr;
+	Timers timers;
 
 	void openSettings(bool checked);
 	void reload(bool checked);
