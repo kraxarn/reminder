@@ -77,7 +77,7 @@ auto Settings::load() -> QJsonObject
 
 void Settings::save(const QJsonObject &json)
 {
-	QDir::root().mkpath(getPath());
+	QDir::root().mkpath(QFileInfo(getPath()).absolutePath());
 	QFile file(getPath());
 	file.open(QIODevice::WriteOnly);
 	file.write(QJsonDocument(json).toJson(QJsonDocument::Indented));
