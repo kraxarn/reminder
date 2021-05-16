@@ -19,4 +19,5 @@ private:
 	QMenu *menu = nullptr;
 
 	void openSettings(bool checked);
+	void reload(bool checked);
 };
