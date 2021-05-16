@@ -20,4 +20,9 @@ struct Interval
 	 * Message to show in notification
 	 */
 	QString message;
+
+	/**
+	 * Currently in use
+	 */
+	bool active = false;
 };

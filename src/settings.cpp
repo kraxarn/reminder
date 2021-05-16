@@ -21,6 +21,7 @@ auto Settings::getIntervals() -> QList<Interval>
 				Qt::ISODate),
 			obj["minutes_before"].toInt(),
 			obj["message"].toString(),
+			obj["active"].toBool(),
 		};
 	}
 	return intervals;
@@ -36,6 +37,7 @@ void Settings::setIntervals(const QList<Interval> &intervals)
 			QPair<QString, int>("minutes_before", interval.minutesBefore),
 			QPair<QString, QString>("remind_time",
 				interval.remindTime.toString(Qt::ISODate)),
+			QPair<QString, bool>("active", interval.active),
 		});
 	}
 
